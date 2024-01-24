@@ -73,10 +73,10 @@ ARG APP_ENV=production
 # copy everything, excluding the one from .dockerignore file
 COPY . ./
 
-RUN set -eux; \
-    mkdir -p storage/logs storage/framework bootstrap/cache; \
-    composer install --prefer-dist --no-progress --no-suggest --optimize-autoloader; \
-    composer clear-cache
+#RUN set -eux; \
+#    mkdir -p storage/logs storage/framework bootstrap/cache; \
+#    composer install --prefer-dist --no-progress --no-suggest --optimize-autoloader; \
+#    composer clear-cache
 
 COPY docker/php-fpm/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
