@@ -70,13 +70,13 @@ jobs:
 #          container-name: nginx
 #          image: ${{ steps.build-image-nginx.outputs.image }}
 #
-#      - name: "Render task definition: php-fpm"
-#        id: task-def-php-fpm
-#        uses: aws-actions/amazon-ecs-render-task-definition@v1
-#        with:
-#          task-definition: ${{ steps.task-def-nginx.outputs.task-definition }}
-#          container-name: php-fpm
-#          image: ${{ steps.build-image-php-fpm.outputs.image }}
+      - name: "Render task definition: php-fpm"
+        id: task-def-php-fpm
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def-nginx.outputs.task-definition }}
+          container-name: php-fpm
+          image: ${{ steps.build-image-php-fpm.outputs.image }}
 #
 #      - name: "Render task definition: nodejs"
 #        id: task-def-nodejs
