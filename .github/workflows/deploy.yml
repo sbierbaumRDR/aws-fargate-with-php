@@ -77,22 +77,14 @@ jobs:
           task-definition: task-definition.json
           container-name: php-fpm
           image: ${{ steps.build-image-php-fpm.outputs.image }}
-#
-#      - name: "Render task definition: nodejs"
-#        id: task-def-nodejs
-#        uses: aws-actions/amazon-ecs-render-task-definition@v1
-#        with:
-#          task-definition: ${{ steps.task-def-php-fpm.outputs.task-definition }}
-#          container-name: nodejs
-#          image: ${{ steps.build-image-nodejs.outputs.image }}
-#
-#      - name: "Deploy Amazon ECS task definition"
-#        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-#        with:
-#          task-definition: ${{ steps.task-def-nodejs.outputs.task-definition }}
-#          service: laravel-app-service
-#          cluster: laravel-app
-#          wait-for-service-stability: false
+
+      - name: "Deploy Amazon ECS task definition"
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def-php-fpm.outputs.task-definition }}
+          service: app-service
+          cluster: DevCluster2
+          wait-for-service-stability: false
 
       - name: Logout of Amazon ECR
         if: always()
