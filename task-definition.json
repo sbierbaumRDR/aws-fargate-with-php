@@ -17,6 +17,6 @@
     "memory": "1024",
     "networkMode": "awsvpc",
     "requiresCompatibilities": [
-        "FARGATE"
+        "EC2"
     ]
 }
