@@ -52,8 +52,8 @@ jobs:
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def-php-fpm.outputs.task-definition }}
-          service: php
-          cluster: DevCluster2
+          service: ebia-recette
+          cluster: ebia-recette
           wait-for-service-stability: false
 
       - name: Logout of Amazon ECR
